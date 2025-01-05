@@ -8,3 +8,9 @@ class Node {
         this.right = null;
     }
 }
+function sortedArrayToBST(arr) {
+    let n = arr.length;
+
+    if (n === 0)
+        return null;
+}
