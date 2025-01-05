@@ -22,4 +22,10 @@ function sortedArrayToBST(arr) {
     let q = [ {node : root, range : [ 0, n - 1 ]} ];
     let frontIndex = 0;
 
+while (frontIndex < q.length) {
+    let front = q[frontIndex];          // Fetch the next item from the queue
+    let curr = front.node;              // Get the current node to process
+    let [s, e] = front.range;           // Deconstruct the range [s, e] for this node
+    let index = s + Math.floor((e - s) / 2);  // Calculate the middle index
+}
 }
