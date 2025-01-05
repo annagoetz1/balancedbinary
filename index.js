@@ -36,4 +36,19 @@ if (s < index) {
     curr.left = left;
     q.push({node : left, range : [ s, index - 1 ]});
 }
+     // If right subtree exists
+     if (e > index) { // check if right subtree exists
+        let midRight
+            = index + 1
+              + Math.floor((e - index - 1) / 2); //calculate right subtree root/middle
+        let right = new Node(arr[midRight]);
+        curr.right = right;
+        q.push(
+            {node : right, range : [ index + 1, e ]});
+    }
+
+    frontIndex++;
 }
+
+return root;
+
