@@ -28,4 +28,12 @@ while (frontIndex < q.length) {
     let [s, e] = front.range;           // Deconstruct the range [s, e] for this node
     let index = s + Math.floor((e - s) / 2);  // Calculate the middle index
 }
+// If left subtree exists
+if (s < index) {
+    let midLeft
+        = s + Math.floor((index - 1 - s) / 2);
+    let left = new Node(arr[midLeft]);
+    curr.left = left;
+    q.push({node : left, range : [ s, index - 1 ]});
+}
 }
