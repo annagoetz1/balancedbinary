@@ -13,4 +13,10 @@ function sortedArrayToBST(arr) {
 
     if (n === 0)
         return null;
+
+
+    // Create the root node
+    let mid = Math.floor((n - 1) / 2);
+    let root = new Node(arr[mid]);
+
 }
