@@ -19,4 +19,7 @@ function sortedArrayToBST(arr) {
     let mid = Math.floor((n - 1) / 2);
     let root = new Node(arr[mid]);
 
+    let q = [ {node : root, range : [ 0, n - 1 ]} ];
+    let frontIndex = 0;
+
 }
