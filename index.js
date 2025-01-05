@@ -52,3 +52,15 @@ if (s < index) {
 
 return root;
 
+
+function preOrder(root) { //console log data in preorder
+    if (root === null)
+        return;
+    console.log(root.data + " ");
+    preOrder(root.left);
+    preOrder(root.right);
+}
+
+let arr = [ 1, 2, 3, 4 ];
+let root = sortedArrayToBST(arr);
+preOrder(root);
