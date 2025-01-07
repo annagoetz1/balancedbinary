@@ -47,6 +47,45 @@ function sortedArrayToBST(arr) {
     return root;
 }
 
+// Delete a value from the BST
+deleteItem(value) {
+    this.root = this._deleteNode(this.root, value);
+}
+
+_deleteNode(node, value) {
+    if (node === null) {
+        return null; // Base case: the value is not in the tree
+    }
+
+    if (value < node.value) {
+        node.left = this._deleteNode(node.left, value); // Traverse left
+    } else if (value > node.value) {
+        node.right = this._deleteNode(node.right, value); // Traverse right
+    } else {
+        // Found the node to delete
+
+        // Case 1: No children (leaf node)
+        if (node.left === null && node.right === null) {
+            return null;
+        }
+
+        // Case 2: One child
+        if (node.left === null) {
+            return node.right; // Replace node with its right child
+        } else if (node.right === null) {
+            return node.left; // Replace node with its left child
+        }
+
+        // Case 3: Two children
+        // Find the in-order successor (smallest value in the right subtree)
+        let minRight = this._findMin(node.right);
+        node.value = minRight.value; // Replace node's value with the in-order successor
+        node.right = this._deleteNode(node.right, minRight.value); // Remove the in-order successor
+    }
+
+    return node;
+}
+
 function preOrder(root) { // console log data in preorder
     if (root === null)
         return;
