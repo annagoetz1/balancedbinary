@@ -46,6 +46,36 @@ function sortedArrayToBST(arr) {
 
     return root;
 }
+ // Insert a value into the BST
+ insert(value) {
+    const newNode = new Node(value);
+
+    if (this.root === null) {
+        this.root = newNode; // If the tree is empty
+        return this;
+    }
+
+    let current = this.root;
+    while (true) {
+        if (value === current.value) return undefined; // Avoid duplicates
+
+        if (value < current.value) {
+            // Go left
+            if (current.left === null) {
+                current.left = newNode;
+                return this;
+            }
+            current = current.left;
+        } else {
+            // Go right
+            if (current.right === null) {
+                current.right = newNode;
+                return this;
+            }
+            current = current.right;
+        }
+    }
+}
 
 // Delete a value from the BST
 deleteItem(value) {
