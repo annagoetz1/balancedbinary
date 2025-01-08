@@ -116,6 +116,23 @@ _deleteNode(node, value) {
     return node;
 }
 
+
+function findNode(root, value) {
+    if (root === null) {
+        return null; // Base case: the value is not in the tree
+    }
+    
+    if (root.data === value) {
+        return root; // Found the node
+    } else if (value < root.data) {
+        return findNode(root.left, value); // Search in the left subtree
+    } else {
+        return findNode(root.right, value); // Search in the right subtree
+    }
+}
+    
+
+
 function preOrder(root) { // console log data in preorder
     if (root === null)
         return;
