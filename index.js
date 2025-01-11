@@ -235,6 +235,30 @@ class BinaryTree {
         traverse(this.root); // Start traversal from the root
     }
 
+
+    // Build a balanced tree from a sorted array
+    buildTree(arr) {
+        if (arr.length === 0) return null;
+
+        const mid = Math.floor(arr.length / 2);
+        const root = new Node(arr[mid]);
+
+        root.left = this.buildTree(arr.slice(0, mid)); // Left half for left subtree
+        root.right = this.buildTree(arr.slice(mid + 1)); // Right half for right subtree
+
+        return root;
+    }
+
+    // Rebalance the tree
+    rebalance() {
+        if (this.root === null) return; // Tree is already empty, no need to rebalance
+
+        // Get sorted array of values using in-order traversal
+        const sortedValues = this.inOrder();
+
+        // Build a new balanced tree and set it as the root
+        this.root = this.buildTree(sortedValues);
+    }
     // Post-Order Traversal
     postOrder(callback) {
         if (!callback || typeof callback !== "function") {
