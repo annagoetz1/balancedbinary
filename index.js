@@ -150,6 +150,20 @@ class BinaryTree {
     constructor() {
         this.root = null;
     }
+
+        // Function to calculate the height of a given node
+        height(node) {
+            if (node === null) {
+                return -1; // Base case: height of an empty node is -1
+            }
+    
+            // Recursively calculate the height of left and right subtrees
+            let leftHeight = this.height(node.left);
+            let rightHeight = this.height(node.right);
+    
+            // The height of the current node is the max of its subtrees + 1
+            return 1 + Math.max(leftHeight, rightHeight);
+        }
     inOrder(callback) {
         if (!callback || typeof callback !== "function") {
             throw new Error("A valid callback function is required.");
