@@ -191,6 +191,35 @@ class BinaryTree {
         // If the node is not found in this subtree, return -1
         return -1;
     }
+
+    // Function to check if the tree is balanced
+    isBalanced(node = this.root) {
+        // Helper function to calculate height and check balance
+        const checkHeight = (current) => {
+            if (current === null) {
+                return 0; // Height of a null node is 0
+            }
+
+            // Recursively calculate the height of the left and right subtrees
+            const leftHeight = checkHeight(current.left);
+            if (leftHeight === -1) return -1; // Left subtree is unbalanced
+
+            const rightHeight = checkHeight(current.right);
+            if (rightHeight === -1) return -1; // Right subtree is unbalanced
+
+            // Check if the current node is balanced
+            if (Math.abs(leftHeight - rightHeight) > 1) {
+                return -1; // Current node is unbalanced
+            }
+
+            // Return the height of the current node
+            return 1 + Math.max(leftHeight, rightHeight);
+        };
+
+        // Start the recursive check
+        return checkHeight(node) !== -1;
+    }
+
     inOrder(callback) {
         if (!callback || typeof callback !== "function") {
             throw new Error("A valid callback function is required.");
