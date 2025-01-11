@@ -164,7 +164,21 @@ class BinaryTree {
 
         traverse(this.root); // Start traversal from the root
     }
+    // Pre-Order Traversal
+    preOrder(callback) {
+        if (!callback || typeof callback !== "function") {
+            throw new Error("A valid callback function is required.");
+        }
 
+        const traverse = (node) => {
+            if (node === null) return;
+            callback(node);      // Process current node
+            traverse(node.left); // Visit left subtree
+            traverse(node.right); // Visit right subtree
+        };
+
+        traverse(this.root); // Start traversal from the root
+    }
 
     levelOrder(callback) {
         if (!callback || typeof callback !== "function") {
