@@ -164,6 +164,33 @@ class BinaryTree {
             // The height of the current node is the max of its subtrees + 1
             return 1 + Math.max(leftHeight, rightHeight);
         }
+
+            // Function to calculate the depth of a given node
+    depth(node, current = this.root, currentDepth = 0) {
+        if (current === null) {
+            throw new Error("Node not found in the tree."); // Error if the node doesn't exist
+        }
+
+        // If we find the node, return the current depth
+        if (current === node) {
+            return currentDepth;
+        }
+
+        // Recursively search in the left subtree
+        if (current.left) {
+            let leftDepth = this.depth(node, current.left, currentDepth + 1);
+            if (leftDepth !== -1) return leftDepth;
+        }
+
+        // Recursively search in the right subtree
+        if (current.right) {
+            let rightDepth = this.depth(node, current.right, currentDepth + 1);
+            if (rightDepth !== -1) return rightDepth;
+        }
+
+        // If the node is not found in this subtree, return -1
+        return -1;
+    }
     inOrder(callback) {
         if (!callback || typeof callback !== "function") {
             throw new Error("A valid callback function is required.");
