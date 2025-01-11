@@ -144,3 +144,37 @@ function preOrder(root) { // console log data in preorder
 let arr = [1, 2, 3, 4];
 let root = sortedArrayToBST(arr);
 preOrder(root);
+
+
+class BinaryTree {
+    constructor() {
+        this.root = null;
+    }
+
+    levelOrder(callback) {
+        if (!callback || typeof callback !== "function") {
+            throw new Error("A valid callback function is required.");
+        }
+
+        if (!this.root) {
+            return; // Empty tree
+        }
+
+        // Queue to store nodes to process
+        let queue = [this.root];
+
+        while (queue.length > 0) {
+            let currentNode = queue.shift(); // Remove the first node in the queue
+
+            callback(currentNode); // Call the callback on the current node
+
+            // Add left and right children (if any) to the queue
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            }
+        }
+    }
+}
