@@ -320,4 +320,17 @@ class BinaryTree {
     }
 }
 
+// Driver Script
+
+const tree = new BinaryTree();
+
+// Step 1: Create a binary search tree from an array of random numbers < 100
+const randomNumbers = generateRandomArray(10);
+randomNumbers.forEach(num => tree.insert(num));
+
+console.log("Initial Tree:");
+tree.levelOrder(node => console.log(node.data));
+
+console.log("\nIs the tree balanced?", tree.isBalanced());
+
 
