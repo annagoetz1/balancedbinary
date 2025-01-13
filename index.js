@@ -334,4 +334,15 @@ tree.levelOrder(node => console.log(node.data));
 // Step 2: Check if the tree is balanced
 console.log("\nIs the tree balanced?", tree.isBalanced());
 
+// Step 3: Print out all elements in level, pre, post, and in-order traversals
+console.log("\nLevel Order:");
+tree.levelOrder(node => console.log(node.data));
 
+console.log("\nPre Order:");
+tree.preOrder(node => console.log(node.data));
+
+console.log("\nPost Order:");
+tree.postOrder(node => console.log(node.data));
+
+console.log("\nIn Order:");
+console.log(tree.inOrder());
