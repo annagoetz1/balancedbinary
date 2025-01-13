@@ -331,6 +331,7 @@ randomNumbers.forEach(num => tree.insert(num));
 console.log("Initial Tree:");
 tree.levelOrder(node => console.log(node.data));
 
+// Step 2: Check if the tree is balanced
 console.log("\nIs the tree balanced?", tree.isBalanced());
 
 
