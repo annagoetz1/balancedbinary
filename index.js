@@ -346,3 +346,13 @@ tree.postOrder(node => console.log(node.data));
 
 console.log("\nIn Order:");
 console.log(tree.inOrder());
+
+// Step 4: Unbalance the tree by adding several numbers > 100
+tree.insert(200);
+tree.insert(150);
+tree.insert(250);
+tree.insert(300);
+
+console.log("\nAfter Unbalancing the Tree:");
+tree.levelOrder(node => console.log(node.data));
+console.log("\nIs the tree balanced?", tree.isBalanced());
