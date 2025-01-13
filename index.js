@@ -356,3 +356,9 @@ tree.insert(300);
 console.log("\nAfter Unbalancing the Tree:");
 tree.levelOrder(node => console.log(node.data));
 console.log("\nIs the tree balanced?", tree.isBalanced());
+
+// Step 5: Balance the tree by calling rebalance
+tree.rebalance();
+console.log("\nAfter Rebalancing the Tree:");
+tree.levelOrder(node => console.log(node.data));
+console.log("\nIs the tree balanced?", tree.isBalanced());
