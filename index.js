@@ -46,37 +46,7 @@ function sortedArrayToBST(arr) {
 
     return root;
 }
- // Insert a value into the BST
- insert(value) {
-    const newNode = new Node(value);
-
-    if (this.root === null) {
-        this.root = newNode; // If the tree is empty
-        return this;
-    }
-
-    let current = this.root;
-    while (true) {
-        if (value === current.value) return undefined; // Avoid duplicates
-
-        if (value < current.value) {
-            // Go left
-            if (current.left === null) {
-                current.left = newNode;
-                return this;
-            }
-            current = current.left;
-        } else {
-            // Go right
-            if (current.right === null) {
-                current.right = newNode;
-                return this;
-            }
-            current = current.right;
-        }
-    }
-}
-
+ 
 // Delete a value from the BST
 deleteItem(value) {
     this.root = this._deleteNode(this.root, value);
@@ -87,9 +57,9 @@ _deleteNode(node, value) {
         return null; // Base case: the value is not in the tree
     }
 
-    if (value < node.value) {
+    if (value < node.data) {
         node.left = this._deleteNode(node.left, value); // Traverse left
-    } else if (value > node.value) {
+    } else if (value > node.data) {
         node.right = this._deleteNode(node.right, value); // Traverse right
     } else {
         // Found the node to delete
@@ -191,6 +161,38 @@ class BinaryTree {
         // If the node is not found in this subtree, return -1
         return -1;
     }
+    // Insert a value into the BST
+ insert(value) {
+    const newNode = new Node(value);
+
+    if (this.root === null) {
+        this.root = newNode; // If the tree is empty
+        return this;
+    }
+
+    let current = this.root;
+    while (true) {
+        if (value === current.value) return undefined; // Avoid duplicates
+
+        if (value < current.value) {
+            // Go left
+            if (current.left === null) {
+                current.left = newNode;
+                return this;
+            }
+            current = current.left;
+        } else {
+            // Go right
+            if (current.right === null) {
+                current.right = newNode;
+                return this;
+            }
+            current = current.right;
+        }
+    }
+}
+
+
 
     // Function to check if the tree is balanced
     isBalanced(node = this.root) {
@@ -233,6 +235,7 @@ class BinaryTree {
         };
 
         traverse(this.root); // Start traversal from the root
+        return result;
     }
 
 
